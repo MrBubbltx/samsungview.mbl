@@ -344,11 +344,37 @@
         height: 250px;
         }
     }
+.message{
+        width: 380px;
+        padding: 10px;
+        height: 90px;
+        margin: 5px;
+        border-radius: 10px;
+        background-color: #3b3b3b;
+        position: absolute;
+        right: -150%;
+        transition: 1s ease-in-out;
+        opacity: 0;
+        color: #ffffff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    .message.active{
+        right: 0%;
+        opacity: 1;
+        transition: 1s ease-in-out;
+    }
 </style>
 <body>
     <div class="header">
         <p class="logo">Samsung</p>
         <p>For Educational Purposes<br>Made By MrBubbl (Abatayo)</p>
+    </div>
+    <div class="message">
+        <i class="material-icons">report_problem</i>
+        <p>The context menu is currently disabled!</p>
     </div>
     <div class="mainarea">
         <div class="col-2 cpmodels">
@@ -495,6 +521,14 @@
     </div>
 </body>
 <script>
+    let megs = document.querySelector('.message');
+    document.addEventListener("contextmenu",function(msg){
+        msg.preventDefault();
+        megs.classList.add('active');
+        setTimeout(function(){
+            megs.classList.remove('active');
+        },5000);
+    });
     let btna02 = document.querySelector('.A02btn');
     let btna11 = document.querySelector('.A11btn');
     let btna21 = document.querySelector('.A21btn');
